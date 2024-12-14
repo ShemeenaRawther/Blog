@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <div class="container">
+    <h1> Welcome to my blog</h1>
+    <a href="/new" id="newBlog">New Blog</a>
+    <ul>
+        <%  if (locals.blogs) { %>
+        <!-- List goes here if current second is even. -->
+        <%blogs.forEach((blog)=> { %>
+          <li>
+            <h2><%=blog.title %></h2>
+            <small><%=blog.createdDate %></small>
+            <p><%=blog.content %></p>
+            <small>By: <%=blog.author %></small> <br/> 
+            <a class="edit" href="/edit/<%= blog.id %>">Edit</a>          
+            <a class="delete" href="/delete/<%= blog.id %>">Delete</a>          
+          </li>
+          <%}) %>  
+          <% } %>          
+      </ul>
+    </div>
+</body>
+</html>
